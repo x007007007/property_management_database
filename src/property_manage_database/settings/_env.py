@@ -1,0 +1,2 @@
+GEN_DOC = True
+ENABLE_DEBUG_TOOL = True

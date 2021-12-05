@@ -16,10 +16,13 @@ dependencies = [
     "django-filter~=21.1",
     "django-guardian~=2.4",
     "Pygments~=2.10",
-    "drf-yasg~=1.20",
+    "drf-yasg[validation]~=1.20",
+    "graphene-django~=2.15",
+    "python-dateutil~=2.8",
+    "django-debug-toolbar~=3.2",
+    "django-cors-headers~=3.10",
 ]
 requires-python = ">=3.10"
-dynamic = ["classifiers"]
 license = {text = "MIT"}
 
 [project.urls]

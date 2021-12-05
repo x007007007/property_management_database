@@ -11,6 +11,7 @@ INSTALL_REQUIRES = [
     'django-guardian~=2.4',
     'Pygments~=2.10',
     'drf-yasg~=1.20',
+    'graphene-django~=2.15',
 ]
 
 setup_kwargs = {
@@ -31,12 +32,10 @@ setup_kwargs = {
         'property_manage_database.app.payment',
         'property_manage_database.app.payment.alipay',
         'property_manage_database.app.payment.alipay.migrations',
+        'property_manage_database.app.payment.alipay.management.commands',
     ],
     'package_dir': {'': 'src'},
     'package_data': {'': ['*']},
-    'classifiers': [
-        'License :: OSI Approved :: MIT License',
-    ],
     'install_requires': INSTALL_REQUIRES,
     'python_requires': '>=3.10',
 
