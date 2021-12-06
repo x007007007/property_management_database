@@ -8,7 +8,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'property_manage_database.app.payment.alipay'
+    'graphene_django',
+    'property_manage_database.app.payment.alipay',
+    'property_manage_database.app.graphql',
 ]
 
 MIDDLEWARE = [

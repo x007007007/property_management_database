@@ -13,8 +13,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from ._base import *
 from ._drf import *
+from ._graphql import *
+
 from ._plugin_debug_tool import *
 from ._plugin_doc_yasg import *
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent

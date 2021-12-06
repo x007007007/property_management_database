@@ -1,5 +1,5 @@
-import datetime
-from django.utils import timezone
+from dateutil.parser import parse as datetime_parse
+from dateutil.tz import gettz
 from django.core.management.base import BaseCommand, CommandError
 from property_manage_database.app.payment.alipay.models import (
     BalanceHistoryModel,
@@ -33,7 +33,7 @@ class Command(BaseCommand):
                 if not sn.startswith("#"):
                     BalanceHistoryModel.objects.update_or_create(
                         defaults=dict(
-                            datetime=timezone.datetime.strptime(row['时间'], '%Y-%m-%d %H:%M:%S'),
+                            datetime=datetime_parse(row['时间']).replace(tzinfo=gettz('Asia/Shanghai')),
                             name=row['名称'],
                             remark=row['备注'],
                             number=float(row['收入'] or row['支出']),

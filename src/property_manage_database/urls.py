@@ -20,10 +20,12 @@ from django.urls import (
     include,
 )
 from django.conf import settings
-
+from graphene_django.views import GraphQLView
+from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path(r"graphql/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
     path('api/v1/payment/aliyun/', include("property_manage_database.app.payment.alipay.urls")),
 ]
 
