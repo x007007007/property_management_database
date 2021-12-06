@@ -7,6 +7,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # admin enhance
+    'rangefilter',
+    'django_admin_listfilter_dropdown',
     'rest_framework',
     'graphene_django',
     'property_manage_database.app.payment.alipay',
