@@ -12,6 +12,12 @@ class PMDBBaseModel(models.Model):
         abstract = True
 
 
+class DisplayNameMixin:
+
+    def __str__(self):
+        return f"<{self.__class__.__name__.removeprefix('Model')}({self.pk}){self.name}>"
+
+
 class SoftDeleteMixin(models.Model):
     is_delete = models.BooleanField(default=False)
 

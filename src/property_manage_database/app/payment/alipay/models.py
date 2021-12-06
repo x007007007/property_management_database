@@ -1,19 +1,16 @@
-from property_manage_database.utils.db import PMDBBaseModel
+from property_manage_database.utils.db import PMDBBaseModel, DisplayNameMixin
 from django.db import models
 
 
 # Create your models here.
 
 
-class BalanceHistoryCategoryModel(PMDBBaseModel):
+class BalanceHistoryCategoryModel(DisplayNameMixin, PMDBBaseModel):
     name = models.CharField(max_length=64, unique=True)
 
 
-class BalanceHistoryPaymentTypeModel(PMDBBaseModel):
+class BalanceHistoryPaymentTypeModel(DisplayNameMixin, PMDBBaseModel):
     name = models.CharField(max_length=64, unique=True)
-
-    def __str__(self):
-        return f'<BalanceHistoryPType({self.pk}) {self.name}>'
 
 
 class BalanceHistoryModel(PMDBBaseModel):
@@ -27,27 +24,27 @@ class BalanceHistoryModel(PMDBBaseModel):
     pmdb_category = models.ForeignKey("BalanceHistoryCategoryModel", null=True, blank=True, on_delete=models.SET_NULL)
 
 
-class TradingSourceTypeModel(PMDBBaseModel):
+class TradingSourceTypeModel(DisplayNameMixin, PMDBBaseModel):
     name = models.CharField(max_length=128)
 
 
-class TradingTransferTypeModel(PMDBBaseModel):
+class TradingTransferTypeModel(DisplayNameMixin, PMDBBaseModel):
     name = models.CharField(max_length=128)
 
 
-class TradingPartyModel(PMDBBaseModel):
+class TradingPartyModel(DisplayNameMixin, PMDBBaseModel):
     name = models.CharField(max_length=128)
 
 
-class TradingProductModel(PMDBBaseModel):
+class TradingProductModel(DisplayNameMixin, PMDBBaseModel):
     name = models.CharField(max_length=128)
 
 
-class TradingStatusModel(PMDBBaseModel):
+class TradingStatusModel(DisplayNameMixin, PMDBBaseModel):
     name = models.CharField(max_length=128)
 
 
-class TradingDirectionModel(PMDBBaseModel):
+class TradingDirectionModel(DisplayNameMixin, PMDBBaseModel):
     name = models.CharField(max_length=128)
 
 
@@ -55,7 +52,7 @@ class TradingRemarkModel(PMDBBaseModel):
     remark = models.TextField()
 
 
-class TradingFundingStatusModel(PMDBBaseModel):
+class TradingFundingStatusModel(DisplayNameMixin, PMDBBaseModel):
     name = models.CharField(max_length=128)
 
 
