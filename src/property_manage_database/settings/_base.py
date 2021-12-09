@@ -1,6 +1,7 @@
 from ._env import *
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -10,8 +11,10 @@ INSTALLED_APPS = [
     # admin enhance
     'rangefilter',
     'django_admin_listfilter_dropdown',
+    'django_extensions',
     'rest_framework',
     'graphene_django',
+    'property_manage_database.app.webrtc',
     'property_manage_database.app.payment.alipay',
     'property_manage_database.app.graphql',
 ]
