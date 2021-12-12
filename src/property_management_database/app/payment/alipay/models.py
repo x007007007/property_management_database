@@ -23,6 +23,11 @@ class BalanceHistoryModel(PMDBBaseModel):
 
     pmdb_category = models.ForeignKey("BalanceHistoryCategoryModel", null=True, blank=True, on_delete=models.SET_NULL)
 
+    class Meta:
+        permissions = (
+            ("remark_history", "You can remark history"),
+        )
+
 
 class TradingSourceTypeModel(DisplayNameMixin, PMDBBaseModel):
     name = models.CharField(max_length=128)

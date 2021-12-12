@@ -15,16 +15,17 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from ._env import *
-from ._database import *
+from ._dj_db import *
+from ._dj_auth import *
 from ._asgi import *
 from ._wsgi import *
 from ._login_pass import *
 from ._base import *
 from ._drf import *
 from ._graphql import *
-
 from ._plugin_debug_tool import *
 from ._plugin_doc_yasg import *
+from ._plugin_grapplli import *
 
 
 # SECURITY WARNING: keep the secret key used in production secret!

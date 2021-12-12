@@ -1,6 +1,10 @@
 from ._env import *
 
 INSTALLED_APPS = [
+    *([
+          # 'grappelli.dashboard',
+          'grappelli',
+      ] if ENABLE_GRAPPELLI else []),
     'channels',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -8,12 +12,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mptt',
     # admin enhance
     'rangefilter',
     'django_admin_listfilter_dropdown',
     'django_extensions',
     'rest_framework',
     'graphene_django',
+    'guardian',
     'property_management_database.app.webrtc',
     'property_management_database.app.payment.alipay',
     'property_management_database.app.graphql',

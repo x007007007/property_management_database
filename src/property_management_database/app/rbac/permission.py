@@ -9,6 +9,9 @@ class APIFilterPermission(permissions.BasePermission):
     Global permission check for blocked IPs.
     """
 
+    def __init__(self):
+        pass
+
     def has_permission(self, request: request.Request, view):
         user = request.user
         if user.is_anonymous or not user.is_authenticated:

@@ -26,6 +26,7 @@ from asgiref.sync import sync_to_async
 
 
 urlpatterns = [
+    *([path('grappelli/', include('grappelli.urls'))] if settings.ENABLE_GRAPPELLI else []),
     path('admin/', admin.site.urls),
     path('graphql/', sync_to_async(csrf_exempt(GraphQLView.as_view(graphiql=True)))),
     path('api/v1/webrtc/', include('property_management_database.app.webrtc.urls')),
