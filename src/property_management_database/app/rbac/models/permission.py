@@ -1,4 +1,5 @@
 from django.db import models
+from .permission_type import PermissionTypeModel
 
 
 class PermissionModel(models.Model):
@@ -20,3 +21,9 @@ class PermissionModel(models.Model):
         blank=True,
         on_delete=models.CASCADE
     )
+
+    def __str__(self):
+
+        if self.type.name == PermissionTypeModel.TYPE_DJ_MODEL:
+            return f"<{self.__class__.__name__}({self.pk}){self.type.name}:{self.dj_perm.name}>"
+        return f"<{self.__class__.__name__}({self.pk}){self.type.name}:{self.perm_config.name}>"

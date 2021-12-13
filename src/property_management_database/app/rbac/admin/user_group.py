@@ -12,3 +12,7 @@ class UserGroupModelAdmin(GuardedModelAdminMixin, DraggableMPTTAdmin):
         'indented_title',
         'name',
     )
+
+    list_filter = (
+        'dimension',
+    )

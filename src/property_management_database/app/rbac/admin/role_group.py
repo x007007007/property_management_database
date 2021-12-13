@@ -12,3 +12,4 @@ class RoleGroupModelAdmin(GuardedModelAdminMixin, DraggableMPTTAdmin):
         'indented_title',
         'name',
     )
+
