@@ -262,12 +262,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "django-js-asset"
+version = "1.2.2"
+summary = "script tag with additional attributes for django.forms.Media"
+
+[[package]]
 name = "django-jsonfield"
 version = "1.4.1"
 summary = "JSONField for django models"
 dependencies = [
     "Django>=1.11",
     "six",
+]
+
+[[package]]
+name = "django-mptt"
+version = "0.13.4"
+requires_python = ">=3.6"
+summary = "Utilities for implementing Modified Preorder Tree Traversal with your Django Models and working with trees of Model instances."
+dependencies = [
+    "django-js-asset",
 ]
 
 [[package]]
@@ -785,7 +799,7 @@ dependencies = [
 
 [metadata]
 lock_version = "3.1"
-content_hash = "sha256:a80caeb908cd4b283222852e40a9f00118f9c3af84be7fcce24345853b300529"
+content_hash = "sha256:bf8bc22770d851d1419af6f39e92af1869e9694279dcd919ef09db8fd80a3895"
 
 [metadata.files]
 "aioice 0.7.5" = [
@@ -1037,9 +1051,17 @@ content_hash = "sha256:a80caeb908cd4b283222852e40a9f00118f9c3af84be7fcce24345853
     {file = "django_guardian-2.4.0-py3-none-any.whl", hash = "sha256:440ca61358427e575323648b25f8384739e54c38b3d655c81d75e0cd0d61b697"},
     {file = "django-guardian-2.4.0.tar.gz", hash = "sha256:c58a68ae76922d33e6bdc0e69af1892097838de56e93e78a8361090bcd9f89a0"},
 ]
+"django-js-asset 1.2.2" = [
+    {file = "django_js_asset-1.2.2-py2.py3-none-any.whl", hash = "sha256:8ec12017f26eec524cab436c64ae73033368a372970af4cf42d9354fcb166bdd"},
+    {file = "django-js-asset-1.2.2.tar.gz", hash = "sha256:c163ae80d2e0b22d8fb598047cd0dcef31f81830e127cfecae278ad574167260"},
+]
 "django-jsonfield 1.4.1" = [
     {file = "django_jsonfield-1.4.1-py2.py3-none-any.whl", hash = "sha256:ccb2fe623e1bf7799e49c593b0a89a85084ef8d3debbf26d92a54e27b5305d72"},
     {file = "django-jsonfield-1.4.1.tar.gz", hash = "sha256:f789a0ea1f80b48aff7d6c36dd356ce125dbf1b7cd97a82d315607ac758f50ff"},
+]
+"django-mptt 0.13.4" = [
+    {file = "django_mptt-0.13.4-py3-none-any.whl", hash = "sha256:75745b621ae31d97957ed924155a750dfa8cacd9543799ada2d713fd6bc3f5c7"},
+    {file = "django-mptt-0.13.4.tar.gz", hash = "sha256:80c9fb34df7796a4e5af0cb6b8ade3697555b1aa438bd07a01f32b3ab5202b63"},
 ]
 "django-nvd3 0.9.7" = [
     {file = "django-nvd3-0.9.7.tar.gz", hash = "sha256:1ec0ba4c74fe84f4ce65d1246a4a471ddd51d7a2ed8f69c60d70229d41a06c63"},

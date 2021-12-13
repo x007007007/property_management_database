@@ -1,0 +1,16 @@
+- model: pmdb_rbac.permissiontypemodel
+  pk: 1
+  fields:
+    name: dj_model
+- model: pmdb_rbac.permissiontypemodel
+  pk: 2
+  fields:
+    name: api
+- model: pmdb_rbac.permissiontypemodel
+  pk: 3
+  fields:
+    name: ui_button
+- model: pmdb_rbac.permissiontypemodel
+  pk: 4
+  fields:
+    name: ui_menu
