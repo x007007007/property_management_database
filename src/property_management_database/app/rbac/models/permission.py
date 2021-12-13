@@ -8,4 +8,15 @@ class PermissionModel(models.Model):
         null=True,
         blank=True
     )
-    rule = models.CharField(max_length=254)
+    dj_perm = models.ForeignKey(
+        'auth.Permission',
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE
+    )
+    perm_config = models.ForeignKey(
+        'PermissionConfigModel',
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE
+    )

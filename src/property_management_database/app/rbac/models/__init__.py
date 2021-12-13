@@ -1,4 +1,5 @@
 from .permission import PermissionModel
+from .permission_config import PermissionConfigModel
 from .permission_type import PermissionTypeModel
 from .role import RoleModel
 from .role_group import RoleGroupModel
