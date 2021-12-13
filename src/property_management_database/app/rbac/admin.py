@@ -5,12 +5,19 @@ from .models import (
     RoleModel,
     RoleGroupModel,
     UserGroupModel,
+    PermissionTypeModel,
     UserGroupBindUserWithRoleModel,
     UserGroupDimensionModel,
     PermissionModel,
 )
 # Register your models here.
 
+
+@admin.register(PermissionTypeModel)
+class PermissionTypeModelAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+    )
 
 @admin.register(RoleModel)
 class RoleModelAdmin(admin.ModelAdmin):
