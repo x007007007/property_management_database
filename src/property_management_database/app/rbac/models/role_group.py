@@ -6,6 +6,12 @@ from mptt.models import MPTTModel, TreeForeignKey
 class RoleGroupModel(MPTTModel):
     name = models.CharField(max_length=254)
     role_set = models.ManyToManyField("RoleModel")
+    auth_group = models.ForeignKey(
+        "auth.Group",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL
+    )
     parent = TreeForeignKey(
         'self',
         null=True,

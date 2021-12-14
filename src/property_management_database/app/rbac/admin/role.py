@@ -18,9 +18,7 @@ class RoleModelAdmin(admin.ModelAdmin):
             )
         return qs
 
-    list_display = (
-        'name',
-    )
+    list_display = (    )
 
     autocomplete_fields = (
         # 'permission_set',
