@@ -11,5 +11,6 @@ class MenuModelAdmin(GuardedModelAdminMixin, DraggableMPTTAdmin):
         'tree_actions',
         'indented_title',
         'name',
+        'category',
     )
 

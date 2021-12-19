@@ -6,4 +6,6 @@ from . import (
     role_group,
     user_group,
     user_group_dimension,
+    resource_group,
+    resource_group_dimension,
 )
