@@ -36,6 +36,9 @@ class LocationModel(MPTTModel):
     )
     name = models.CharField(max_length=128)
 
+    def __str__(self):
+        return f"<{self.__class__.__name__} ({self.pk} {self.name})>"
+
 
 @receiver(signal=pre_save, sender=HubOverviewModel)
 def on_hub_overview_model_pre_save(sender, instance, **kwargs):

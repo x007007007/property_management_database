@@ -24,7 +24,10 @@ class HubOverviewListCreateAPIView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         hub = HubModel.objects.get(id=self.kwargs['hub_pk'])
-        return serializer.save(hub=hub)
+        obj = serializer.save(hub=hub)
+        hub.newest_overview = obj
+        hub.save(update_fields=('newest_overview',))
+        return obj
 
 
 class HubOverviewRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):

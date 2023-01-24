@@ -11,6 +11,7 @@ class HubSerializer(serializers.ModelSerializer):
     class Meta:
         model = HubModel
         fields = (
+            'id',
             'name',
             'code',
             'image',
