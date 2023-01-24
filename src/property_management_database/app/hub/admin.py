@@ -19,6 +19,7 @@ class HubModelAdmin(admin.ModelAdmin):
 @admin.register(HubOverviewModel)
 class HubOverviewModelAdmin(admin.ModelAdmin):
     list_display = (
+        "pk",
         'image',
     )
 

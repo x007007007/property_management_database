@@ -1,10 +1,17 @@
+import os.path
+
 from django.db import models
+from django.db.models.signals import pre_delete, pre_save
+from django.utils import timezone
+from django.dispatch.dispatcher import receiver
 from mptt.models import MPTTModel, TreeForeignKey
-from ..rbac.fields import ResourceGroupForeignKey
 
 
 def hub_photo_image_update(object, file):
-    return f"image/hub_photo/%Y/%m/%d/{object.pk}"
+    ext_name = file.split(".")[-1]
+    now = timezone.now()
+    fold_path = now.strftime("%Y/%m/%d")
+    return f"image/hub_photo/{fold_path}/{object.hub.pk}/{now.timestamp()}.{ext_name}"
 
 
 class HubOverviewModel(models.Model):
@@ -28,3 +35,21 @@ class LocationModel(MPTTModel):
         related_name="children"
     )
     name = models.CharField(max_length=128)
+
+
+@receiver(signal=pre_save, sender=HubOverviewModel)
+def on_hub_overview_model_pre_save(sender, instance, **kwargs):
+    assert isinstance(instance, HubOverviewModel)
+    if instance.pk:
+        if old := HubOverviewModel.objects.filter(pk=instance.pk).first():
+            if old.image and old.image.path:
+                if os.path.exists(old.image.path):
+                    old.image.delete(False)
+
+
+@receiver(signal=pre_delete, sender=HubOverviewModel)
+def on_hub_overview_model_pre_delete(sender, instance, **kwargs):
+    assert isinstance(instance, HubOverviewModel)
+    if instance.image:
+        if os.path.exists(instance.image.path):
+            instance.image.delete(False)
