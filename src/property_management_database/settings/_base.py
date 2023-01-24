@@ -20,6 +20,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'graphene_django',
     'guardian',
+    'property_management_database.app.goods',
+    'property_management_database.app.hub',
     'property_management_database.app.menu',
     'property_management_database.app.payment.alipay',
     'property_management_database.app.graphql',
