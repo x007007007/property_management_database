@@ -13,6 +13,7 @@ class HubOverviewModel(models.Model):
 
 
 class HubModel(models.Model):
+    name = models.CharField(max_length=255, default='')
     code = models.CharField(max_length=16)
     newest_overview = models.ForeignKey(HubOverviewModel, null=True, blank=True, on_delete=models.SET_NULL)
     location = models.ForeignKey("LocationModel", null=True, blank=True, on_delete=models.SET_NULL)

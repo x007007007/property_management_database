@@ -16,9 +16,9 @@ class APIFilterPermission(permissions.BasePermission):
         user = request.user
         if user.is_anonymous or not user.is_authenticated:
             return False
-        user_perm = PermissionModel.objects.filter(type='api').filter(role_set__user_set__in=[user])
-        group_perm = PermissionModel.objects.filter(type='api').filter(role_set__group_set__in=user.groups.all())
+        # user_perm = PermissionModel.objects.filter(type='api').filter(role_set__user_set__in=[user])
+        # group_perm = PermissionModel.objects.filter(type='api').filter(role_set__group_set__in=user.groups.all())
 
-        for perm in itertools.chain(user_perm.union(group_perm)):
-            print(perm)
+        # for perm in itertools.chain(user_perm.union(group_perm)):
+        #     print(perm)
         return True

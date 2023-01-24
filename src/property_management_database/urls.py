@@ -31,7 +31,8 @@ urlpatterns = [
     path('graphql/', sync_to_async(csrf_exempt(GraphQLView.as_view(graphiql=True)))),
     path('api/v1/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/v1/payment/aliyun/', include("property_management_database.app.payment.alipay.urls")),
-    path('api/v1/', include("property_management_database.app.menu.urls"))
+    path('api/v1/', include("property_management_database.app.menu.urls")),
+    path('api/v1/', include("property_management_database.app.hub.urls"))
 ]
 
 if settings.ENABLE_DEBUG_TOOL:
