@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 """
+import os
 
 from ._env import *
 from ._dj_db import *
@@ -27,6 +28,8 @@ from ._plugin_debug_tool import *
 from ._plugin_doc_yasg import *
 from ._plugin_grapplli import *
 
+# 最后载入
+from ._latest_load_host import *
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-1o#h4jxrjcq1=g=4zy@r=s+e0dgb00ml8fzaji5*xtx0nemqtb'
@@ -61,3 +64,5 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
+
+PORTAL_HOST = os.environ.get("PORTAL_HOST", 'http://localhost:8000/{token}/')
