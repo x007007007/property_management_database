@@ -1,6 +1,7 @@
 FROM python:3.9.16-alpine3.17 as build
 WORKDIR /build
-RUN pip config set global.index-url=http://mirrors.aliyun.com/pypi/simple/ && pip install "pdm==2.4.0"
+RUN pip config set global.index-url http://mirrors.aliyun.com/pypi/simple/ && pip install "pdm==2.4.0"
+COPY ./ ./
 RUN pdm install && pdm build
 RUN python setup.py build
 
