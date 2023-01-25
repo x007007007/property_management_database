@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from rest_framework import generics
+from rest_framework import permissions
 
 from ..models import LocationModel
 
@@ -23,6 +24,8 @@ class LocationModelSerializer(serializers.ModelSerializer):
 
 
 class LocationRetrieveAPIView(generics.RetrieveAPIView):
+    permission_classes = [permissions.AllowAny]
+
     serializer_class = LocationModelSerializer
     queryset = LocationModel.objects.all()
 

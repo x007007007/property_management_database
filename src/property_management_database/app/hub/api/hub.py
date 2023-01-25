@@ -1,5 +1,7 @@
 from rest_framework import generics
 from rest_framework import serializers
+from rest_framework import permissions
+from django_filters import rest_framework as drf_filter
 import shortuuid
 from ..models import HubModel, LocationModel
 
@@ -32,8 +34,19 @@ class HubSerializer(serializers.ModelSerializer):
         )
 
 
+class HubListFilterSet(drf_filter.FilterSet):
+    class Meta:
+        model = HubModel
+        fields = [
+            'location',
+        ]
+
+
 class HubListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = HubSerializer
+    permission_classes = [permissions.AllowAny]
+    filterset_class = HubListFilterSet
+    filter_backends = [drf_filter.DjangoFilterBackend]
     queryset = HubModel.objects.select_related('location').all()
 
     def perform_create(self, serializer):

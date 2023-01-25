@@ -61,4 +61,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-PORTAL_HOST = os.environ.get("PORTAL_HOST", 'http://localhost:8000/{token}/')
+PORTAL_HOST = os.environ.get("PORTAL_HOST", 'http://192.168.29.145:8080/hub/{token}/update')

@@ -38,3 +38,6 @@ homepage = "https://github.com/x007007007/property_management_database"
 
 [tool]
 [tool.pdm]
+
+[tool.pdm.python]
+use_venv = false
