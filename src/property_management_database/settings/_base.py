@@ -13,6 +13,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mptt',
+    'django_filters',
     # admin enhance
     'rangefilter',
     'django_admin_listfilter_dropdown',

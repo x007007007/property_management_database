@@ -17,6 +17,7 @@ def hub_photo_image_update(object, file):
 class HubOverviewModel(models.Model):
     image = models.ImageField(upload_to=hub_photo_image_update)
     hub = models.ForeignKey("HubModel", on_delete=models.CASCADE)
+    created_time = models.DateTimeField(auto_now_add=True)
 
 
 class HubModel(models.Model):

@@ -1,4 +1,6 @@
 .pdm.toml
+.git/*
+*.sqlite3
 __pypackages__
 /dist/
 /build

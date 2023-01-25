@@ -9,8 +9,10 @@ COPY ./ ./
 RUN pdm build && ls -la
 
 FROM python:3.9.16
+RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+RUN apt-get update && apt-get -y --no-install-recommends install avahi-utils && apt-get clean all
 WORKDIR /opt/pmdb
-COPY --from=build /build/req.txt
+COPY --from=build /build/req.txt ./
 RUN pip install -r ./req.txt
 COPY --from=build /build/dist/* ./
 RUN pip install ./property_manage_database-0.0.1-py3-none-any.whl
