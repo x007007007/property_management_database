@@ -56,3 +56,8 @@ TEMPLATES = [
 
 MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]

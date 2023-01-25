@@ -32,10 +32,10 @@ from ._plugin_grapplli import *
 from ._latest_load_host import *
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1o#h4jxrjcq1=g=4zy@r=s+e0dgb00ml8fzaji5*xtx0nemqtb'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "false").lower() == 'true'
 
 ALLOWED_HOSTS = ['*']
 
@@ -60,5 +60,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
 
 PORTAL_HOST = os.environ.get("PORTAL_HOST", 'http://localhost:8000/{token}/')
+
+MEDIA_ROOT = '/data/media'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '/data/db.sqlite3',
+    }
+}
+
