@@ -1,12 +1,9 @@
 [project]
 name = "property-manage-database"
-version = ""
+version = "0.0.1"
 description = ""
 authors = [
     {name = "xxc", email = "x007007007@hotmail.com"},
-]
-packages = [
-    "src"
 ]
 
 dependencies = [
@@ -17,30 +14,27 @@ dependencies = [
     "django-guardian~=2.4",
     "Pygments~=2.10",
     "drf-yasg[validation]~=1.20",
-    "graphene-django~=2.15",
+    "graphene-django>=3.0.0",
     "python-dateutil~=2.8",
     "django-debug-toolbar~=3.2",
     "django-cors-headers~=3.10",
     "django-admin-rangefilter~=0.8",
     "django-admin-list-filter-dropdown~=1.0",
     "django-extensions~=3.1",
-    "aiortc~=1.2",
-    "django-admin-charts~=0.24",
+    #    "aiortc~=1.2",,
+    #    "django-admin-charts~=0.24",,
     "channels~=3.0",
     "channels-redis~=3.3",
     "django-mptt~=0.13",
-    "Pillow",
-    "shortuuid",
+    "pillow>=9.4.0",
+    "shortuuid>=1.0.11",
+    "qrcode>=7.3.1",
 ]
 requires-python = ">=3.7"
 license = {text = "MIT"}
 
 [project.urls]
-homepage = ""
-
-[build-system]
-requires = ["pdm-pep517"]
-build-backend = "pdm.pep517.api"
+homepage = "https://github.com/x007007007/property_management_database"
 
 [tool]
 [tool.pdm]

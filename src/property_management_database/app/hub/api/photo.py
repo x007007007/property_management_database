@@ -23,11 +23,11 @@ class HubOverviewListCreateAPIView(generics.ListCreateAPIView):
     queryset = HubOverviewModel.objects.all()
 
     def get_queryset(self):
-        hub = shortcuts.get_object_or_404(HubModel, id=self.kwargs['hub_pk'])
+        hub = shortcuts.get_object_or_404(HubModel, code=self.kwargs['hub_code'])
         return self.queryset.filter(hub=hub)
 
     def perform_create(self, serializer):
-        hub = shortcuts.get_object_or_404(HubModel, id=self.kwargs['hub_pk'])
+        hub = shortcuts.get_object_or_404(HubModel, code=self.kwargs['hub_code'])
         obj = serializer.save(hub=hub)
         hub.newest_overview = obj
         hub.save(update_fields=('newest_overview',))
