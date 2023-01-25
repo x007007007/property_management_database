@@ -3,6 +3,7 @@ from django import shortcuts
 from rest_framework import generics
 from rest_framework import serializers
 from rest_framework import permissions
+from rest_framework import authentication
 from ..models import HubOverviewModel, HubModel
 
 
@@ -19,6 +20,7 @@ class HubOverviewModelSerializer(serializers.ModelSerializer):
 
 class HubOverviewListCreateAPIView(generics.ListCreateAPIView):
     permission_classes = [permissions.AllowAny]
+    authentication_classes = []
     serializer_class = HubOverviewModelSerializer
     queryset = HubOverviewModel.objects.all()
 

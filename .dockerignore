@@ -1,7 +1,7 @@
 .pdm.toml
 __pypackages__
-dist/
-build/
+/dist/
+/build
 .idea/
 /venv
 /venv39

@@ -2,7 +2,7 @@ from django.urls import (
     path,
 )
 from . import api
-
+from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
     path('hub/', api.hub.HubListCreateAPIView.as_view()),
