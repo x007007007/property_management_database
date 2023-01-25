@@ -25,9 +25,10 @@ class HubOverviewModelAdmin(admin.ModelAdmin):
 
 
 @admin.register(LocationModel)
-class MenuModelAdmin(GuardedModelAdminMixin, DraggableMPTTAdmin):
+class LocationModelAdmin(GuardedModelAdminMixin, DraggableMPTTAdmin):
     list_display = (
         'tree_actions',
         'indented_title',
         'name',
     )
+    expand_tree_by_default = True
