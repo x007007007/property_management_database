@@ -68,6 +68,7 @@ STATICFILES_FINDERS = [
 PORTAL_HOST = os.environ.get("PORTAL_HOST", 'http://localhost:8000/{token}/')
 
 MEDIA_ROOT = '/data/media'
+STATIC_ROOT = '/data/static'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
