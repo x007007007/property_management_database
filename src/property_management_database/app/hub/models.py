@@ -39,6 +39,8 @@ class LocationModel(MPTTModel):
     def __str__(self):
         return f"<{self.__class__.__name__} ({self.pk} {self.name})>"
 
+    def get_path(self):
+        return '/'.join([x['name'] for x in self.get_ancestors(include_self=True).values('name')])
 
 @receiver(signal=pre_save, sender=HubOverviewModel)
 def on_hub_overview_model_pre_save(sender, instance, **kwargs):

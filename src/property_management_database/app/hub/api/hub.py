@@ -1,12 +1,24 @@
 from rest_framework import generics
 from rest_framework import serializers
 import shortuuid
-from ..models import HubModel
+from ..models import HubModel, LocationModel
+
+
+class HubLocationDetailSerializer(serializers.ModelSerializer):
+    path = serializers.CharField(source="get_path")
+
+    class Meta:
+        model = LocationModel
+        fields = (
+            'id',
+            'path'
+        )
 
 
 class HubSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(source="newest_overview.image", default=None, read_only=True)
     code = serializers.CharField(read_only=True)
+    location_detail = HubLocationDetailSerializer(source="location", read_only=True)
 
     class Meta:
         model = HubModel
@@ -16,12 +28,13 @@ class HubSerializer(serializers.ModelSerializer):
             'code',
             'image',
             'location',
+            'location_detail',
         )
 
 
 class HubListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = HubSerializer
-    queryset = HubModel.objects.all()
+    queryset = HubModel.objects.select_related('location').all()
 
     def perform_create(self, serializer):
         while True:
