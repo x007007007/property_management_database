@@ -29,6 +29,8 @@ dependencies = [
     "pillow>=9.4.0",
     "shortuuid>=1.0.11",
     "qrcode>=7.3.1",
+    "django-hosts>=5.2",
+    "django-grappelli>=3.0.4",
 ]
 requires-python = ">=3.7"
 license = {text = "MIT"}
@@ -41,3 +43,9 @@ homepage = "https://github.com/x007007007/property_management_database"
 
 [tool.pdm.python]
 use_venv = false
+
+
+[pypi]
+#url = "https://mirrors.aliyun.com/pypi/simple/"
+url = "http://devpi.home.x007007007.info/root/pypi/+simple/"
+verify_ssl = false
