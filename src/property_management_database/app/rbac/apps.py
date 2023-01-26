@@ -1,3 +1,5 @@
+import warnings
+
 from django.apps import AppConfig
 
 
@@ -7,10 +9,13 @@ class RbacConfig(AppConfig):
     label = 'pmdb_rbac'
 
     def ready(self):
-        from .fields import (
-            ResourceGroupForeignKeyMeta,
-            ResourceGroupForeignKey
-        )
-        from .models import ResourceGroupDimensionModel
-        for gf in ResourceGroupForeignKeyMeta.registor_list():  # type: ResourceGroupForeignKey
-            ResourceGroupDimensionModel.objects.get_or_create(name=gf.dimension)
+        try:
+            from .fields import (
+                ResourceGroupForeignKeyMeta,
+                ResourceGroupForeignKey
+            )
+            from .models import ResourceGroupDimensionModel
+            for gf in ResourceGroupForeignKeyMeta.registor_list():  # type: ResourceGroupForeignKey
+                ResourceGroupDimensionModel.objects.get_or_create(name=gf.dimension)
+        except Exception:
+            warnings.warn("DB not initial", RuntimeWarning)

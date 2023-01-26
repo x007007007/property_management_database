@@ -1,7 +1,10 @@
+ARG PYPI_INDEX=https://mirrors.aliyun.com/pypi/simple/
+ARG PYPI_TRUSTED_HOST=mirrors.aliyun.com
 FROM python:3.9.16 as build
 WORKDIR /build
-RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ && pip install "pdm==2.4.0"
-RUN pdm config python.use_venv false
+RUN pip config set global.index-url ${PYPI_INDEX} \
+    && pip config set global.trusted-host ${PYPI_TRUSTED_HOST} \
+    && pip install "pdm==2.4.0" & pdm config python.use_venv false
 COPY ./pyproject.toml ./
 RUN pdm install
 RUN pdm export -f requirements -o ./req.txt
@@ -9,10 +12,10 @@ COPY ./ ./
 RUN pdm build && ls -la
 
 FROM python:3.9.16
-RUN pip config set global.index-url http://devpi.home.x007007007.info/root/pypi/+simple/ \
-    && pip config set global.trusted-host devpi.home.x007007007.info
 RUN apt-get update && apt-get -y --no-install-recommends install avahi-utils && apt-get clean all
-RUN /usr/local/bin/python -m pip install --upgrade pip
+RUN pip config set global.index-url ${PYPI_INDEX} \
+    && pip config set global.trusted-host ${PYPI_TRUSTED_HOST}
+    && /usr/local/bin/python -m pip install --upgrade pip
 WORKDIR /opt/pmdb
 #COPY --from=build /build/req.txt ./
 #RUN #pip install -r ./req.txt
@@ -22,4 +25,5 @@ ENV DJANGO_SETTINGS_MODULE=property_management_database.settings.docker_settings
     SECRET_KEY= \
     PORTAL_HOST=
 
+VOLUME ["/data"]
 CMD ["python", "-m", "property_management_database", "runserver", "0.0.0.0:80"]
