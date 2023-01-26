@@ -1,8 +1,12 @@
 version: "3.8"
 
 services:
-  redis:
-    image: library/redis:latest
-    ports:
-      - "6379"
+  pmdb-web:
+    image: x007007007/pmdb:${VERSION?Version not set}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PYPI_INDEX: http://devpi.home.x007007007.info/root/pypi/+simple/
+        PYPI_TRUSTED_HOST: devpi.home.x007007007.info
 

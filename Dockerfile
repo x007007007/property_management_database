@@ -1,10 +1,13 @@
 ARG PYPI_INDEX=https://mirrors.aliyun.com/pypi/simple/
 ARG PYPI_TRUSTED_HOST=mirrors.aliyun.com
 FROM python:3.9.16 as build
+ARG PYPI_INDEX
+ARG PYPI_TRUSTED_HOST
 WORKDIR /build
 RUN pip config set global.index-url ${PYPI_INDEX} \
     && pip config set global.trusted-host ${PYPI_TRUSTED_HOST} \
-    && pip install "pdm==2.4.0" & pdm config python.use_venv false
+    && pip install "pdm==2.4.0" \
+    && pdm config python.use_venv false
 COPY ./pyproject.toml ./
 RUN pdm install
 RUN pdm export -f requirements -o ./req.txt
@@ -14,7 +17,7 @@ RUN pdm build && ls -la
 FROM python:3.9.16
 RUN apt-get update && apt-get -y --no-install-recommends install avahi-utils && apt-get clean all
 RUN pip config set global.index-url ${PYPI_INDEX} \
-    && pip config set global.trusted-host ${PYPI_TRUSTED_HOST}
+    && pip config set global.trusted-host ${PYPI_TRUSTED_HOST} \
     && /usr/local/bin/python -m pip install --upgrade pip
 WORKDIR /opt/pmdb
 #COPY --from=build /build/req.txt ./

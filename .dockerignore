@@ -2,6 +2,7 @@
 .git/*
 *.sqlite3
 __pypackages__
+frontend
 /dist/
 /build
 .idea/
