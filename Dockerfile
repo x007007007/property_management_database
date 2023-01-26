@@ -15,7 +15,22 @@ COPY ./ ./
 RUN pdm build && ls -la
 
 FROM python:3.9.16
-RUN apt-get update && apt-get -y --no-install-recommends install avahi-utils && apt-get clean all
+RUN \
+  mv /etc/apt/sources.list /etc/apt/sources.list.bk \
+  && echo deb https://mirrors.aliyun.com/debian/ bullseye main non-free contrib >>/etc/apt/sources.list \
+  && echo deb-src https://mirrors.aliyun.com/debian/ bullseye main non-free contrib >>/etc/apt/sources.list \
+  && echo deb https://mirrors.aliyun.com/debian-security/ bullseye-security main  >>/etc/apt/sources.list \
+  && echo deb-src https://mirrors.aliyun.com/debian-security/ bullseye-security main  >>/etc/apt/sources.list \
+  && echo deb https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib >>/etc/apt/sources.list \
+  && echo deb-src https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib >>/etc/apt/sources.list \
+  && echo deb https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib >>/etc/apt/sources.list \
+  && echo deb-src https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib >>/etc/apt/sources.list \
+  && apt-get update \
+  && apt-get -y --no-install-recommends install avahi-utils \
+  && apt-get clean all \
+  && mv -f /etc/apt/sources.list.bk /etc/apt/sources.list
+ARG PYPI_INDEX
+ARG PYPI_TRUSTED_HOST
 RUN pip config set global.index-url ${PYPI_INDEX} \
     && pip config set global.trusted-host ${PYPI_TRUSTED_HOST} \
     && /usr/local/bin/python -m pip install --upgrade pip
