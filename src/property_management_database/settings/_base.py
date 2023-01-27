@@ -13,6 +13,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mptt',
+    'django_filters',
     # admin enhance
     'rangefilter',
     'django_admin_listfilter_dropdown',
@@ -20,6 +21,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'graphene_django',
     'guardian',
+    'property_management_database.app.goods',
+    'property_management_database.app.hub',
     'property_management_database.app.menu',
     'property_management_database.app.payment.alipay',
     'property_management_database.app.graphql',
@@ -50,4 +53,12 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+MEDIA_ROOT = 'media'
+MEDIA_URL = '/media/'
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]

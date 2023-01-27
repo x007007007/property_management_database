@@ -20,6 +20,7 @@ from django.urls import (
     include,
 )
 from django.conf import settings
+from django.conf.urls.static import static
 from graphene_django.views import GraphQLView
 from django.views.decorators.csrf import csrf_exempt
 from asgiref.sync import sync_to_async
@@ -31,8 +32,9 @@ urlpatterns = [
     path('graphql/', sync_to_async(csrf_exempt(GraphQLView.as_view(graphiql=True)))),
     path('api/v1/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/v1/payment/aliyun/', include("property_management_database.app.payment.alipay.urls")),
-    path('api/v1/', include("property_management_database.app.menu.urls"))
-]
+    path('api/v1/', include("property_management_database.app.menu.urls")),
+    path('api/v1/', include("property_management_database.app.hub.urls"))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.ENABLE_DEBUG_TOOL:
     import debug_toolbar
